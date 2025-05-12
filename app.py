@@ -3,14 +3,13 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# Modeli yükle
+
 model = joblib.load("model.pkl")
 
 st.set_page_config(page_title="Stres Tahmin Uygulaması", layout="centered")
 st.title("🧠 Stres Tahmin Uygulaması")
 st.markdown("Bu uygulama, öğrencilerin bazı özelliklerine göre stres seviyesini tahmin eder.")
 
-# Girişler
 stud_h = st.slider("Haftalık ders çalışma saati", 0, 80, 10)
 jspe = st.slider("Empati skoru (jspe)", 0.0, 5.0, 2.5)
 qcae_cog = st.slider("Bilişsel empati (qcae_cog)", 0.0, 5.0, 2.5)
@@ -18,7 +17,6 @@ qcae_aff = st.slider("Duygusal empati (qcae_aff)", 0.0, 5.0, 2.5)
 mbi_ex = st.slider("Tükenmişlik (mbi_ex)", 0.0, 5.0, 2.5)
 mbi_ea = st.slider("Kişisel başarı algısı (mbi_ea)", 0.0, 5.0, 2.5)
 
-# Tahmin
 if st.button("Stres Seviyesini Tahmin Et"):
     user_input = pd.DataFrame([{
         'stud_h': stud_h,
